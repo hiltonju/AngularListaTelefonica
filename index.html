@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html ng-app="MyApp">
+<head>
+
+<script src="angular.js"></script>
+<script src="controller/angularController.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta charset="utf-8">
+
+	<title>Tefelone</title>
+</head>
+<body>
+	<div class="jumbotron col-xs-6 text-center col-xs-offset-3" ng-controller='Myctrl'>
+	<div ng-show="isAdd()">
+		<h3>Lista Telefonica</h3>
+         <p><input type = "text" ng-model="lista.nome" placeholder="Nome"></p>
+         <p><input type = "text" ng-model="lista.telefone" placeholder="Telefone"></p>
+         <p><input type = "text" ng-model="lista.sexo" placeholder="Sexo"></p>
+         <p><button ng-click="inserir(lista)" class="btn btn-success" >Adicionar</button></p>
+    </div>    
+        <div ng-show="!isAdd()">
+		<h3>Lista Telefonica</h3>
+         <p><input type = "text" ng-model="editNome" placeholder="Nome"></p>
+         <p><input type = "text" ng-model="editTel" placeholder="Telefone"></p>
+         <p><input type = "text" ng-model="editSexo" placeholder="Sexo"></p>
+         <p><button class="btn btn-success" ng-click="salvar()">Salvar</button></p>
+        </div>
+        <div>
+         <table class="table">
+         <tr class="text-center">
+         	<th class="text-center">Nome</th>
+         	<th class="text-center">Telefone</th>
+         	<th class="text-center">Sexo</th>
+         	<th class="text-center">Ação</th>
+         </tr>
+       	 <tr ng-repeat="l in listas" class="text-center">
+         	<td> {{l.nome}} </td>
+         	<td> {{l.telefone}} </td>
+         	<td> {{l.sexo}} </td>
+         	<td><button ng-click="excluir(l.id)" class="btn btn-xs btn-danger">Deletar</button>
+         	<button class="btn btn-xs btn-primary" ng-click="editar(l.id)">Editar</button></td>
+         </tr>
+         </table>
+        </div>
+    </div>
+</body>
+</html>
